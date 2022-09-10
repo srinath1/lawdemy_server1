@@ -9,7 +9,7 @@ const start=async()=>{
   const app=express()
 
 //   const csrfProtection=csrf({cookie:true})
-const cookieParser=require('cookie-parser')
+// const cookieParser=require('cookie-parser')
 mongoose
   .connect(process.env.DATABASE, {})
   .then(() => console.log("DB connected"))
@@ -22,7 +22,7 @@ app.use(
   })
 );
 app.use(express.json({limit:'5mb'}))
-app.use(cookieParser())
+// app.use(cookieParser())
 app.use(morgan('dev'))
 
 fs.readdirSync('./routes').map(route=>app.use('/api/',require(`./routes/${route}`)))
