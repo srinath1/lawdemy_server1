@@ -59,6 +59,7 @@ const login=async(req,res)=>{
 //       // secure: true, // only works on https
 //     });
     // send user as json response
+    
     res.json(user,token);
   }catch(err){
     return res.status(400).send('Error,Please try again')
