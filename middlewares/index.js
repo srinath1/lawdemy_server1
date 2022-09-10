@@ -1,7 +1,7 @@
 const { expressjwt: jwt } = require("express-jwt");
 const User =require( '../models/user')
 const Course=require('../models/course')
-var { expressjwt: jwt } = require("express-jwt");
+
 const requireSignin=jwt({ secret: process.env.JWT_SECRET, algorithms: ["HS256"] })
 
 const isInstructor = async (req, res, next) => {
