@@ -8,7 +8,7 @@ require('dotenv').config()
 const start=async()=>{
   const app=express()
 
-// const csrfProtection=csrf({cookie:true})
+ const csrfProtection=csrf({cookie:true})
 const cookieParser=require('cookie-parser')
 mongoose
   .connect(process.env.DATABASE, {})
