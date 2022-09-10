@@ -54,19 +54,19 @@ const login=async(req,res)=>{
     // return user and token to client, exclude hashed password
     user.password = undefined;
     // send token in cookie
-    res.cookie("token", token, {
-      httpOnly: true,
-      // secure: true, // only works on https
-    });
+//     res.send("token", token, {
+//       httpOnly: true,
+//       // secure: true, // only works on https
+//     });
     // send user as json response
-    res.json(user);
+    res.json(user,token);
   }catch(err){
     return res.status(400).send('Error,Please try again')
   }
 }
 const logout=async(req,res)=>{
   try{
-    res.clearCookie('token')
+//     res.clearCookie('token')
     return res.json({message:'signout success'})
   }
   catch(err){
