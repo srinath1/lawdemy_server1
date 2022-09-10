@@ -16,12 +16,30 @@ mongoose
   .catch((err) => console.log("DB Error => ", err));
 
   
-app.use(cors())
+app.use(
+  cors({
+    origin: [process.env.CLIENT_URL,'https://lawdemycourses.herokuapp.com/'],
+  })
+);
 app.use(express.json({limit:'5mb'}))
 app.use(cookieParser())
 app.use(morgan('dev'))
 
 fs.readdirSync('./routes').map(route=>app.use('/api/',require(`./routes/${route}`)))
+  const path = require('path')
+
+if(process.env.NODE_ENV==='production')
+{
+
+    app.use('/' , express.static('client/build'))
+
+    app.get('*' , (req , res)=>{
+
+          res.sendFile(path.resolve(__dirname, 'client/build/index.html'));
+
+    })
+
+}
 app.use(csrfProtection);
 
 app.get("/api/csrf-token", (req, res) => {
