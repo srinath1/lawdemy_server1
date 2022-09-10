@@ -1,14 +1,9 @@
 const { expressjwt: jwt } = require("express-jwt");
 const User =require( '../models/user')
 const Course=require('../models/course')
-const requireSignin=jwt({
+var { expressjwt: jwt } = require("express-jwt");
+const requireSignin=jwt({ secret: process.env.JWT_SECRET, algorithms: ["HS256"] })
 
-     getToken:(req,res)=>req.cookies.token,
-    secret:process.env.JWT_SECRET,
-    algorithms:['HS256']
-
-    
-})
 const isInstructor = async (req, res, next) => {
   console.log('remove idea')
     try {
