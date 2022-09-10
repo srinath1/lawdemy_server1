@@ -3,7 +3,7 @@ const cors=require('cors')
 const morgan=require('morgan')
 const fs=require('fs')
 const mongoose=require('mongoose')
-const csrf=require('csurf')
+// const csrf=require('csurf')
 require('dotenv').config()
 const start=async()=>{
   const app=express()
@@ -40,11 +40,11 @@ if(process.env.NODE_ENV==='production')
     })
 
 }
-app.use(csrfProtection);
+// app.use(csrfProtection);
 
-app.get("/api/csrf-token", (req, res) => {
-  res.json({ csrfToken: req.csrfToken() });
-});
+// app.get("/api/csrf-token", (req, res) => {
+//   res.json({ csrfToken: req.csrfToken() });
+// });
 const PORT=process.env.PORT || 8000
 app.listen(PORT,()=>console.log(`Server running  on port ${PORT}`))
 }
