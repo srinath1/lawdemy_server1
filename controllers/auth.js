@@ -60,7 +60,7 @@ const login=async(req,res)=>{
 //     });
     // send user as json response
     
-    res.json(user,token);
+    res.json({user,token});
   }catch(err){
     return res.status(400).send('Error,Please try again')
   }
